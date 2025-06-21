@@ -1,0 +1,18 @@
+Approach 1 - Using Hashing Technique - Array
+class Solution {
+        int missingNum(int arr[]) {        
+        int n = arr.length;
+        int hashArr[] = new int [n+2];
+        
+        for(int i = 0; i< arr.length; i++){
+            hashArr[arr[i]] = 1;
+        }
+        
+        for(int i = 1; i< hashArr.length; i++){
+            if(hashArr[i]==0){
+                return i;
+            }
+        }
+        return 0;
+    }
+}
