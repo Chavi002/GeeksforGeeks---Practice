@@ -1,0 +1,28 @@
+// User function Template for Java
+
+class Solution {
+    public int kthElement(int a[], int b[], int k) {
+        // code here
+        int index=0;
+        int n = a.length;
+        int m = b.length;
+        int result[] = new int[n+m];
+        int low = 0;
+        int high = 0;
+        while(low < n && high < m){
+            if(a[low] <b[high]){
+            result[index++] = a[low++];
+            }else{
+            result[index++] = b[high++];    
+            }
+        }
+        while(low < n){
+            result[index++] = a[low++];
+        }
+        while(high < m){
+            result[index++] = b[high++];
+        }
+        
+        return result [k-1];
+    }
+}
