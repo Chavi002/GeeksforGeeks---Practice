@@ -1,0 +1,38 @@
+// User function Template for Java
+
+class Solution {
+    public double medianOf2(int a[], int b[]) {
+        // Your Code Here
+        // User function Template for Java
+
+        int index=0;
+        int n = a.length;
+        int m = b.length;
+        int totalLength = n+m;
+        int medianIndex1 = totalLength/2;
+        int medianIndex2 = medianIndex1 -1;
+        int result[] = new int[n+m];
+        int low = 0;
+        int high = 0;
+        while(low < n && high < m){
+            if(a[low] <b[high]){
+            result[index++] = a[low++];
+            }else{
+            result[index++] = b[high++];    
+            }
+        }
+        while(low < n){
+            result[index++] = a[low++];
+        }
+        while(high < m){
+            result[index++] = b[high++];
+        }
+        
+        if(totalLength%2==1){
+            return result[totalLength/2];
+        }else{
+            return (result[medianIndex1] + result[medianIndex2])/2.0;
+        }
+        
+    }
+}
