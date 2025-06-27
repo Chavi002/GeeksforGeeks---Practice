@@ -1,0 +1,48 @@
+/*node class of the linked list
+class Node
+{
+    int data;
+    Node next;
+    Node(int key)
+    {
+        data = key;
+        next = null;
+    }
+}*/
+class Solution {
+    static Node reverseList(Node head) {
+      if(head == null || head.next == null){
+        return head;
+      }  
+        Node prev = head;
+        Node current = prev.next;
+        while(current != null){
+            Node nextNode = current.next;
+            current.next = prev;
+            //updation of pointers
+            prev = current;
+            current = nextNode;
+        }
+        head.next = null;
+        return prev;
+    }
+    
+    public static void rearrange(Node odd) {
+        // add your code here
+        Node head = odd;
+        Node even = odd.next;
+        
+        Node odd1 = odd;
+        Node even1 = even;
+        
+        while(even1 != null && even1.next !=null){
+            odd1.next = even1.next;
+            odd1 = even1.next;
+            
+            even1.next = odd1.next;
+            even1 = odd1.next;
+        }
+        odd1.next = reverseList(even);
+        
+    }
+}
