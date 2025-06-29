@@ -1,0 +1,30 @@
+/*Complete the function below*/
+class GfG {
+    
+     public Stack<Integer> sort(Stack<Integer> s) {
+        //add code here.
+        sorting(s);
+        return s;
+    }
+     static void sorting(Stack<Integer> s) {
+        //add code here.
+        if(s.empty()){
+            return;
+        }
+        int top = s.pop();
+        sorting(s);
+        doSort(s, top);
+    }
+    
+    static void doSort(Stack<Integer> stack, int peekVal){
+        if(stack.empty() || peekVal >= stack.peek() ){
+            stack.push(peekVal);
+            return;
+        }
+        int tempTop = stack.pop();
+        doSort(stack, peekVal);
+        stack.push(tempTop);
+    }
+}
+    
+    
