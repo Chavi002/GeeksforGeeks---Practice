@@ -1,0 +1,23 @@
+// User function Template for Java
+
+class Solution {
+    static void reverse(Stack<Integer> s) {
+        // add your code here
+        if(s.empty()){
+            return;
+        }
+        int top = s.pop();
+        reverse(s);
+        insert(s, top);
+    }
+    
+    static void insert(Stack<Integer> stack, int peekVal){
+        if(stack.empty()){
+            stack.push(peekVal);
+            return;
+        }
+        int tempTop = stack.pop();
+        insert(stack, peekVal);
+        stack.push(tempTop);
+    }
+}
