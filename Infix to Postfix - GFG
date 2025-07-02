@@ -1,0 +1,44 @@
+class Solution {
+    public static String infixToPostfix(String s) {
+        // code here
+        Stack <Character> stack = new Stack<>();
+        StringBuilder result = new StringBuilder(); 
+        char[] ch = s.toCharArray();
+        for(int i = 0;i <s.length(); i++){
+            char singleChar = ch[i];
+            if(Character.isLetterOrDigit(singleChar)){
+                result.append(singleChar);
+            }else if(singleChar == '('){ //opening
+                stack.push(singleChar);
+            }else if(singleChar == ')'){ //closing
+                while(!stack.isEmpty() && stack.peek() != '('){
+                   result.append(stack.pop());  
+                }
+                stack.pop();
+            }
+            else{
+                while(!stack.isEmpty() && precedence(singleChar) <= precedence(stack.peek())){
+                    result.append(stack.pop());
+                }
+                stack.push(singleChar);
+            }
+        }
+        //pop the remaining operators
+        while(!stack.isEmpty()){
+        result.append(stack.pop());
+        }
+        return result.toString(); 
+    }
+    
+    static int precedence(char operator){
+        switch(operator){
+            case'+':
+            case'-': return 1;
+            case'*':
+            case'/': return 2;
+            case'^': return 3;
+            default:
+            return 0;
+        }
+    }
+}
