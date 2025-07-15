@@ -1,0 +1,44 @@
+//Optimal Solution
+
+// class Solution {
+//     static ArrayList<Integer> leaders(int arr[]) {
+//         // code here
+//         ArrayList<Integer> list = new ArrayList<>();
+//         for(int i = 0; i < arr.length; i++){
+//             int j ;
+//             for(j = i+1; j < arr.length; j++){
+//                 if(arr[j] > arr[i]){
+//                 break;
+//                 }
+//             }
+//             if (j == arr.length) { // only if j reached the end of the array.
+//                 list.add(arr[i]);
+//             }
+//         }
+//         return list;
+//     }
+// }
+
+// O(N) time complexity
+// O(N) Space complexity
+
+class Solution {
+    static ArrayList<Integer> leaders(int arr[]) {
+        ArrayList<Integer> list = new ArrayList<>();
+        
+        int leader = arr[arr.length-1];
+        list.add(arr[arr.length-1]);
+
+        for(int i = arr.length-2; i >= 0; i--){
+            if(arr[i]  >= leader){
+                leader = arr[i];
+                list.add(leader);
+            }
+        }
+        Collections.reverse(list);
+        return list;
+    }
+}
+    
+
+
