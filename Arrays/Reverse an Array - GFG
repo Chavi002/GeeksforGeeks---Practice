@@ -1,0 +1,32 @@
+Approach - 1
+// With O(N) TC AND 0(1) SC
+class Solution {
+    public void reverseArray(int arr[]) {
+        int left = 0;
+        int right = arr.length-1;
+        int temp = 0;
+        while(left<right){
+        temp = arr[left];
+        arr[left] = arr[right];
+        arr[right] =  temp;
+        
+        left++;
+        right--;
+        }
+        
+    }
+}
+
+Approach - 2
+// With O(N) TC AND SC
+// class Solution {
+//     public void reverseArray(int arr[]) {
+//         int result[] = new int[arr.length];
+//         for(int i = arr.length-1; i >= 0; i--){
+//             result[(arr.length-1)- i] = arr[i];
+//         }
+//         for(int i =0; i< arr.length; i++){
+//              arr[i] = result[i];
+//         }
+//     }
+// }
