@@ -1,0 +1,65 @@
+// class Solution {
+//     int countFreq(int[] arr, int target) {
+//         // code here
+//         int count = 0;
+//         for(int i = 0; i < arr.length ; i++){
+//             if(arr[i] ==  target){
+//                 count++;
+//             }else if(arr[i] > target){
+//                 break;
+//             }
+//         }
+//       return count; 
+//     }
+// }
+
+//for optimized solution we will find firt and last occrence and find the number of eleemnts lying between those occurences/
+
+
+class Solution {
+    
+    int firstElement(int[] arr, int target) {
+    int low = 0;
+    int high = arr.length - 1;  
+    int result = -1;
+
+        while(low <= high){
+        int mid = (low + high)/2;
+        if(arr[mid] == target){
+            result = mid; //left most
+            high = mid - 1; //narrow the search to the left half of the array
+        } else if (target > arr[mid]){
+            //update low
+            low = mid+1;
+        }else{
+            high = mid - 1;
+        }
+    }
+    return result;    
+}
+    int lastElement(int[] arr, int target) {
+        int low = 0;
+        int high = arr.length - 1;  
+        int result = -1;
+
+        while(low <= high){
+        int mid = (low + high)/2;
+        if(arr[mid] == target){
+            result = mid; //left most
+            low = mid + 1; //right the search to the left half of the array
+        } else if (target > arr[mid]){
+            //update low
+            low = mid+1;
+        }else{
+            high = mid - 1;
+        }
+    }
+    return result;    
+}
+    int countFreq(int[] arr, int target) {
+        int firstIndex = firstElement(arr, target);
+        int lastIndex = lastElement(arr, target);   
+         if (firstIndex == -1) return 0;
+        return lastIndex - firstIndex + 1;
+    }
+}
