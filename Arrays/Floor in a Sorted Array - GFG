@@ -1,0 +1,40 @@
+// // Brute force
+// class Solution {
+//     public int findFloor(int[] arr, int x) {
+//         // code here
+//         int index = -1;
+//         int max = Integer.MIN_VALUE;
+
+//         for(int i =0; i< arr.length; i++){
+//             if(arr[i] <= x){
+//                 if(arr[i] >= max){
+//                 max = arr[i];
+//                 index = i;   
+//                 }
+//             }
+//         }
+//         return index;
+//     }
+// }
+
+//binary search 
+
+class Solution {
+    public int findFloor(int[] arr, int x) {
+        int low = 0;
+        int high = arr.length - 1;
+        int floorIndex = -1;
+
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
+
+            if (arr[mid] <= x) {
+                floorIndex = mid; // possible index
+                low =mid +1;
+            } else {
+                high = mid - 1;   
+            }
+        }
+        return floorIndex; 
+    }
+}
