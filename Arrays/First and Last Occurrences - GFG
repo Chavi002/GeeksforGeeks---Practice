@@ -1,0 +1,52 @@
+// User function Template for Java
+
+class GFG {
+    public int firstElement(int[] arr, int x) {
+    int low = 0;
+    int high = arr.length - 1;  
+    int result = -1;
+
+    while(low <= high){
+        int mid = (low + high)/2;
+        if(arr[mid] == x){
+            result = mid; //right most
+            high = mid - 1; //narrow the search to the left half of the array
+        } else if (x > arr[mid]){
+            //update low
+            low = mid+1;
+        }else{
+            high = mid - 1;
+        }
+    }
+    return result;    
+}
+    public int lastElement(int[] arr, int x) {
+    int low = 0;
+    int high = arr.length - 1;  
+    int result = -1;
+
+    while(low <= high){
+        int mid = (low + high)/2;
+        if(arr[mid] == x){
+            result = mid; //left most
+            low = mid + 1; //narrow the search to the left half of the array
+        } else if (x > arr[mid]){
+            //update low
+            low = mid+1;
+        }else{
+            high = mid - 1;
+        }
+    }
+    return result;    
+}
+    ArrayList<Integer> find(int arr[], int x) {
+        
+        ArrayList<Integer> list = new ArrayList<>();
+        int firstIndex = firstElement(arr, x);
+        int lastIndex = lastElement(arr, x);
+        list.add(firstIndex);
+        list.add(lastIndex);
+        return list;
+        
+    }
+}
