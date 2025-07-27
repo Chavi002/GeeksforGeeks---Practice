@@ -1,0 +1,31 @@
+Approach-1
+class Solution {
+    int getOddOccurrence(int[] arr) {
+        int xor = 0;
+        for(int i = 0; i< arr.length; i++){
+            xor = xor ^ arr[i];
+        }
+        return xor;   
+    }
+}
+
+Approach-2
+class Solution {
+    int getOddOccurrence(int[] arr) {
+        Map<Integer, Integer> map = new HashMap<>();
+        int count = 0;
+        for(int i =0; i < arr.length; i++){
+            if(map.containsKey(arr[i])){
+                map.put(arr[i], map.get(arr[i])+1);
+            }else{
+                map.put(arr[i],1);
+            }
+        }
+        for(Map.Entry<Integer, Integer>  entry: map.entrySet()){
+            if(entry.getValue()%2 == 1){
+                return entry.getKey();
+            }
+        }
+        return -1;
+    }
+}
