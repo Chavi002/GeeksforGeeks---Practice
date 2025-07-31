@@ -1,0 +1,7 @@
+class CheckBit {
+    static boolean checkKthBit(int n, int k) {
+        // code here
+        int kBit = n & (1 << k);
+      return kBit != 0 ? true: false;
+    }
+}
